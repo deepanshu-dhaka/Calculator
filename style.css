@@ -3,24 +3,29 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+button {
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
 .calculator-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
   width: 400px;
-  height: 400px;
+  height: 500px;
   border: 1px solid black;
-  margin: 0px auto;
+  /* margin: 0px auto; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-
-.screen-container,
-.ac-backspace-divide-buttons,
-.seven-eight-nine-add-buttons,
-.four-five-six-subtract-buttons,
-.one-two-three-multiply-buttons,
-.zero-decimal-equalto-buttons {
-  width: 350px;
+  background-color: #e3e2e2;
 }
 
 .ac-backspace-divide-buttons,
@@ -30,9 +35,72 @@
 .zero-decimal-equalto-buttons {
   display: flex;
   justify-content: space-between;
+  width: 350px;
 }
 
 .screen-container {
-  height: 40px;
+  height: 55px;
+  width: 340px;
   border: 1px solid black;
+  background-color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.screen-container p {
+  font-size: 34px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.seven-eight-nine-add-buttons button,
+.four-five-six-subtract-buttons button,
+.one-two-three-multiply-buttons button {
+  padding: 20px 23px;
+  width: 100%;
+  margin: 5px;
+  border-radius: 4px;
+  border: 1px solid darkgray;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.zero-decimal-equalto-buttons button,
+.ac-backspace-divide-buttons button {
+  padding: 20px 23px;
+  margin: 5px;
+  border-radius: 4px;
+  border: 1px solid darkgray;
+  font-size: 20px;
+  background-color: white;
+  width: 77.5px;
+  font-weight: bold;
+}
+
+#zero-btn,
+#backspace-btn {
+  width: 165px;
+  padding: 20px 23px;
+}
+
+#divide-operator-button,
+#plus-operator-button,
+#subtract-operator-button,
+#multiply-operator-button,
+#equalto-operator-button {
+  background-color: #ffcc00;
+  border: none;
+}
+
+#equalto-operator-button {
+  background-color: #1e77c6;
+  border: none;
+}
+
+#backspace-btn,
+#ac-button {
+  background-color: #f9f9f9;
+  font-weight: 400;
 }
