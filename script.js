@@ -49,7 +49,7 @@ function divide(num1, num2) {
         screenDisplay.textContent = "Can't divide by zero!"
         return;
     }
-    screenDisplay.textContent = num1 / num2;
+    screenDisplay.textContent = result.toFixed(5);
 
     isSecondVariableDeclared = false;
     return result
