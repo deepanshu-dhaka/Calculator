@@ -131,6 +131,71 @@ function clickHandler(e) {
     getValues(e)
 }
 
+document.addEventListener("keydown", keyDownTextField, false);
+includedDigitKeyArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+includedOperatorKeyArray = ['+', '-', '*', '/']
+function keyDownTextField(event) {
+    if (includedDigitKeyArray.includes(event.key)) {
+        console.log(event.key)
+        if (!isFirstVaribaleDeclared) {
+            let clickedDigit = event.key;
+            num1 = num1 + clickedDigit;
+            screenDisplay.textContent = num1;
+        }
+        else if (isFirstVaribaleDeclared && num1) {
+            console.log("yay,we'are here")
+            isSecondVariableDeclared = true;
+            let clickedDigit = event.key;
+            num2 = num2 + clickedDigit;
+            screenDisplay.textContent = num2;
+        }
+
+    }
+    else if (includedOperatorKeyArray.includes(event.key)) {
+        console.log(event.key)
+        if (isSecondVariableDeclared) {
+            num1 = operate(+num1, operator, +num2)
+            console.log(num1)
+            num2 = " ";
+        }
+
+        if (num1) {
+            operator = event.key;
+            console.log("operator defined")
+            isFirstVaribaleDeclared = true;
+        }
+    }
+    else if (event.key === '=' || event.keyCode == 13) {
+        console.log(event.key)
+        if (num1 && operator && num2) {
+            num1 = operate(+num1, operator, +num2)
+            console.log(num1)
+            num1 = '';
+            num2 = '';
+            operator = '';
+            isFirstVaribaleDeclared = false;
+            isSecondVariableDeclared = false;
+            isEqualtoOperatorClicked = false;
+        }
+
+    }
+    else if (event.key === 'Backspace') {
+        let len = screenDisplay.textContent.length;
+        console.log(len)
+        if (len) {
+            if (num2) {
+                num2 = num2.slice(0, -1);
+                screenDisplay.textContent = screenDisplay.textContent.slice(0, -1);
+            }
+            else {
+                num1 = num1.slice(0, -1);
+                screenDisplay.textContent = screenDisplay.textContent.slice(0, -1);
+            }
+
+        }
+    }
+}
+
 function getValues(e) {
     if (!isFirstVaribaleDeclared) {
         let clickedDigit = e.target.textContent;
